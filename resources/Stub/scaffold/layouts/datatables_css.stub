@@ -3,7 +3,11 @@
 
 <style>
     #dataTableBuilder_wrapper table {
-        width: 3200px !important
+        width: 100% !important
+    }
+    thead tr {
+        background-color: #3f8eca;
+        color: #fff;
     }
 
     #dataTableBuilder_wrapper .form-group a i,

@@ -12,7 +12,7 @@
         </a>
 
         {{-- Cards --}}
-        <div class="card">
+        <div class="card col-12">
             <div class="card-header">
                 <h3 class="card-title">Departments</h3>
             </div>

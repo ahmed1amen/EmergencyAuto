@@ -1,0 +1,11 @@
+<!-- Job Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Job', 'Job:') !!}
+    {!! Form::text('Job', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+</div>
+
+<!-- Submit Field -->
+<div class="form-group col-sm-12">
+    {!! Form::  submit(__('Buttons.Save'), ['class' => 'btn btn-primary']) !!}
+    <a href="{{ route('nurses.index') }}" class="btn btn-default">{{ __('Buttons.Cancel') }}</a>
+</div>

@@ -154,7 +154,7 @@ return [/*
 |
 ||
 */
-    'enabled_laravel_mix' => true,
+    'enabled_laravel_mix' => false,
     'laravel_mix_css_path' => 'css/app.css',
     'laravel_mix_js_path' => 'js/app.js',/*
 |--------------------------------------------------------------------------
@@ -390,7 +390,7 @@ return [/*
 
         [
             'name' => 'chartisan',
-            'active' => true,
+            'active' => false,
             'files' => [
                 [
                     'type' => 'js',
@@ -430,8 +430,8 @@ return [/*
             'files' => [
                 [
                     'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css',
+                    'asset' => true,
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css',
                 ],
             ],
         ],

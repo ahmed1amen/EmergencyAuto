@@ -16,7 +16,8 @@ class CreateEmergencyCodesTable extends Migration
         Schema::create('emergency_codes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('specifications');
+            $table->string('icon');
+            $table->string('title');
             $table->string('description');
             $table->string('color');
             $table->timestamps();

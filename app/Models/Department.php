@@ -7,7 +7,7 @@ use Eloquent as Model;
 /**
  * Class Department
  * @package App\Models
- * @version August 2, 2020, 8:40 pm UTC
+ * @version August 23, 2020, 7:28 am UTC
  *
  * @property \App\Models\Hospital $hospital
  * @property \Illuminate\Database\Eloquent\Collection $doctors
@@ -53,10 +53,12 @@ class Department extends Model
      * @var array
      */
     public static $rules = [
-        'name' => 'required',
-        'numberOfBeds' => 'required',
-        'alarmSound' => 'required',
-        'hospital_id' => 'required'
+        'name' => 'required|string|max:255',
+        'numberOfBeds' => 'required|string|max:255',
+        'alarmSound' => 'required|string|max:255',
+        'hospital_id' => 'required',
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable'
     ];
 
     /**

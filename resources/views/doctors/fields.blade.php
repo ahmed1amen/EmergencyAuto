@@ -4,10 +4,10 @@
     {!! Form::number('department_id', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Specification Field -->
+<!-- Special Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('specification', 'Specification:') !!}
-    {!! Form::text('specification', null, ['class' => 'form-control']) !!}
+    {!! Form::label('special_id', 'Special Id:') !!}
+    {!! Form::number('special_id', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

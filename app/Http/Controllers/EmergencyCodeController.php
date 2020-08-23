@@ -15,7 +15,8 @@ class EmergencyCodeController extends Controller
      */
     public function index()
     {
-        return view('emergencycodes.index');
+      $emergencycode=  EmergencyCode::all();
+        return view('emergencycodes.index')->with(['emergencycode'=>$emergencycode]);
     }
 
     /**

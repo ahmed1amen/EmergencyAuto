@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f49ad2b61884caf95e0223343aaf18c0",
+    "content-hash": "163dd5f76f9cf829abef6db9e8565f8b",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -1082,12 +1082,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/InfyOmLabs/adminlte-templates.git",
-                "reference": "c182e6cf940162d39a7fb62ba7aa9a329982fc3e"
+                "reference": "4bc008aab7eeea10c3a356d5005601992e296af6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/InfyOmLabs/adminlte-templates/zipball/c182e6cf940162d39a7fb62ba7aa9a329982fc3e",
-                "reference": "c182e6cf940162d39a7fb62ba7aa9a329982fc3e",
+                "url": "https://api.github.com/repos/InfyOmLabs/adminlte-templates/zipball/4bc008aab7eeea10c3a356d5005601992e296af6",
+                "reference": "4bc008aab7eeea10c3a356d5005601992e296af6",
                 "shasum": ""
             },
             "require": {
@@ -1126,7 +1126,7 @@
                 "laravel",
                 "templates"
             ],
-            "time": "2020-03-14T06:48:45+00:00"
+            "time": "2020-07-22T10:46:06+00:00"
         },
         {
             "name": "infyomlabs/laravel-generator",
@@ -1134,12 +1134,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/InfyOmLabs/laravel-generator.git",
-                "reference": "d6fb538d4c1434287dcb4d79066f4c7331fe52e2"
+                "reference": "c257f9fe25160ea3bc518972c6cc0fee43202d0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/InfyOmLabs/laravel-generator/zipball/d6fb538d4c1434287dcb4d79066f4c7331fe52e2",
-                "reference": "d6fb538d4c1434287dcb4d79066f4c7331fe52e2",
+                "url": "https://api.github.com/repos/InfyOmLabs/laravel-generator/zipball/c257f9fe25160ea3bc518972c6cc0fee43202d0e",
+                "reference": "c257f9fe25160ea3bc518972c6cc0fee43202d0e",
                 "shasum": ""
             },
             "require": {
@@ -1191,7 +1191,7 @@
                 "test",
                 "view"
             ],
-            "time": "2020-06-27T13:05:09+00:00"
+            "time": "2020-08-07T07:55:23+00:00"
         },
         {
             "name": "jeroennoten/laravel-adminlte",
@@ -3184,6 +3184,82 @@
             "time": "2020-06-11T19:38:31+00:00"
         },
         {
+            "name": "spatie/laravel-activitylog",
+            "version": "3.14.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-activitylog.git",
+                "reference": "f1261c461ee4a92fd1e72012b516147ba28a91bb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-activitylog/zipball/f1261c461ee4a92fd1e72012b516147ba28a91bb",
+                "reference": "f1261c461ee4a92fd1e72012b516147ba28a91bb",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "^6.0|^7.0",
+                "illuminate/database": "^6.0|^7.0",
+                "illuminate/support": "^6.0|^7.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "ext-json": "*",
+                "orchestra/testbench": "^4.0|^5.0",
+                "phpunit/phpunit": "^8.0|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Activitylog\\ActivitylogServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Activitylog\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Sebastian De Deyne",
+                    "email": "sebastian@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Tom Witkowski",
+                    "email": "dev.gummibeer@gmail.com",
+                    "homepage": "https://gummibeer.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A very simple activity logger to monitor the users of your website or application",
+            "homepage": "https://github.com/spatie/activitylog",
+            "keywords": [
+                "activity",
+                "laravel",
+                "log",
+                "spatie",
+                "user"
+            ],
+            "time": "2020-05-19T14:31:33+00:00"
+        },
+        {
             "name": "spatie/laravel-permission",
             "version": "3.13.0",
             "source": {
@@ -5052,6 +5128,56 @@
             "time": "2019-10-24T08:53:34+00:00"
         },
         {
+            "name": "twilio/sdk",
+            "version": "6.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twilio/twilio-php.git",
+                "reference": "ed7d54168a437794c4bb9ee52fe173c328402b1b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/ed7d54168a437794c4bb9ee52fe173c328402b1b",
+                "reference": "ed7d54168a437794c4bb9ee52fe173c328402b1b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "^6.3 || ^7.0",
+                "phpunit/phpunit": ">=4.5",
+                "theseer/phpdox": "^0.12.0"
+            },
+            "suggest": {
+                "guzzlehttp/guzzle": "An HTTP client to execute the API requests"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Twilio\\": "src/Twilio/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Twilio API Team",
+                    "email": "api@twilio.com"
+                }
+            ],
+            "description": "A PHP wrapper for Twilio's API",
+            "homepage": "http://github.com/twilio/twilio-php",
+            "keywords": [
+                "api",
+                "sms",
+                "twilio"
+            ],
+            "time": "2020-08-19T19:25:49+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v4.1.7",
             "source": {
@@ -6787,6 +6913,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2019-09-17T06:23:10+00:00"
         },
         {

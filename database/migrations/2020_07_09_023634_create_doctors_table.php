@@ -16,9 +16,9 @@ class CreateDoctorsTable extends Migration
         Schema::create('doctors', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('department_id');
-            $table->string('specification');
-
+            $table->unsignedBigInteger('special_id');
             $table->foreign('department_id')->references('id')->on('departments');
+            $table->foreign('special_id')->references('id')->on('specialties');
             $table->timestamps();
         });
     }

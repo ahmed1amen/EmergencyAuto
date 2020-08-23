@@ -1,9 +1,9 @@
 @extends('adminlte::page')
-@section('title', 'Doctor')
+@section('title', 'Doctors')
 
 @section('content_header')
      <h1>
-            Doctor
+            Doctors
         </h1>
 @stop
 
@@ -13,12 +13,12 @@
        @include('adminlte-templates::common.errors')
         <div class="card box-primary col-12">
             <div class="card-header text-right">
-                   <h3 class="card-title">Doctor</h3>
+                   <h3 class="card-title">Doctors</h3>
 
                </div>
            <div class="card-body">
 
-                   {!! Form::model($doctor, ['route' => ['doctors.update', $doctor->id], 'method' => 'patch']) !!}
+                   {!! Form::model($doctors, ['route' => ['doctors.update', $doctors->id], 'method' => 'patch']) !!}
 
                         @include('doctors.fields')
 

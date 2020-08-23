@@ -1,0 +1,30 @@
+div#ecode{
+
+    cursor: pointer;
+    transition-duration: 300ms;
+    border-radius: 20px;
+
+
+}
+a{
+    color: #2b343e !important;
+    text-decoration: none;
+ background-color: transparent;
+}
+div#ecode:hover{
+background-color: white !important;
+ transform: scale(1.1);
+border-color: green;
+border-width: 2px;
+border-style: solid;
+
+z-index: 99999;
+}
+
+
+
+
+div#ecode >h1,
+div#ecode >h3 {
+font-weight: bold;
+}
