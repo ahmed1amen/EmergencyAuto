@@ -7,11 +7,12 @@ use Eloquent as Model;
 /**
  * Class Doctor
  * @package App\Models
- * @version August 2, 2020, 8:38 pm UTC
+ * @version August 26, 2020, 12:33 pm UTC
  *
  * @property \App\Models\Department $department
+ * @property \App\Models\Specialty $special
  * @property integer $department_id
- * @property string $specification
+ * @property integer $special_id
  */
 class Doctor extends Model
 {
@@ -26,7 +27,7 @@ class Doctor extends Model
 
     public $fillable = [
         'department_id',
-        'specification'
+        'special_id'
     ];
 
     /**
@@ -37,7 +38,7 @@ class Doctor extends Model
     protected $casts = [
         'id' => 'integer',
         'department_id' => 'integer',
-        'specification' => 'string'
+        'special_id' => 'integer'
     ];
 
     /**
@@ -47,7 +48,9 @@ class Doctor extends Model
      */
     public static $rules = [
         'department_id' => 'required',
-        'specification' => 'required'
+        'special_id' => 'required',
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable'
     ];
 
     /**
@@ -56,5 +59,13 @@ class Doctor extends Model
     public function department()
     {
         return $this->belongsTo(\App\Models\Department::class, 'department_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function special()
+    {
+        return $this->belongsTo(\App\Models\Specialty::class, 'special_id');
     }
 }

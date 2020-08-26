@@ -7,7 +7,7 @@ use Eloquent as Model;
 /**
  * Class Department
  * @package App\Models
- * @version August 23, 2020, 7:28 am UTC
+ * @version August 26, 2020, 12:33 pm UTC
  *
  * @property \App\Models\Hospital $hospital
  * @property \Illuminate\Database\Eloquent\Collection $doctors

@@ -20,6 +20,7 @@ class CreateEmergencyCodesTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('color');
+            $table->string('alarm')->nullable();
             $table->timestamps();
         });
     }

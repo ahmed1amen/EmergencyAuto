@@ -6,13 +6,9 @@
 @stop
 
 @section('content')
-       <div class="row justify-content-center">
-        <a class="btn btn-success btn-lg mb-3"  href="{{ route('hospitals.create') }}">
-            <i class="fas fa-2x fa-plus-circle"></i>
-        </a>
 
         {{-- Cards --}}
-        <div class="card col-12">
+        <div class="card col-11">
             <div class="card-header">
                 <h3 class="card-title">Hospitals</h3>
             </div>

@@ -90,15 +90,15 @@ return [/*
 |
 ||
 */
-    'classes_body' => '',
+    'classes_body' => 'skin-midnight',
     'classes_brand' => '',
     'classes_brand_text' => '',
     'classes_content_wrapper' => '',
     'classes_content_header' => 'container-fluid',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-light-maroon elevation-5',
+    'classes_sidebar' => 'sidebar-dark-navy elevation-5',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-dark',
     'classes_topnav_nav' => 'navbar-expand-md',
     'classes_topnav_container' => 'container',/*
 |--------------------------------------------------------------------------
@@ -114,11 +114,11 @@ return [/*
     'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => true,
     'sidebar_collapse_remember_no_transition' => true,
-    'sidebar_scrollbar_theme' => 'os-theme-light',
+    'sidebar_scrollbar_theme' => 'os-theme-dark',
     'sidebar_scrollbar_auto_hide' => 'l',
     'sidebar_nav_accordion' => true,
     'sidebar_nav_animation_speed' => 200,
-    'sidebar_theme' => 'light',
+    'sidebar_theme' => 'dark',
     /*
 |--------------------------------------------------------------------------
 | Control Sidebar (Right Sidebar)
@@ -148,15 +148,19 @@ return [/*
     'profile_url' => false,/*
 |--------------------------------------------------------------------------
 | Laravel Mix
+
 |--------------------------------------------------------------------------
 |
 | Here we can enable the Laravel Mi x option for the admin panel.
 |
 ||
 */
-    'enabled_laravel_mix' => false,
+
+    'enabled_laravel_mix' => true,
     'laravel_mix_css_path' => 'css/app.css',
-    'laravel_mix_js_path' => 'js/app.js',/*
+    'laravel_mix_js_path' => 'js/app.js',
+
+/*
 |--------------------------------------------------------------------------
 | Menu Items
 |--------------------------------------------------------------------------
@@ -188,7 +192,7 @@ return [/*
             'submenu' => [
                 [
                     'text' => 'create',
-                    'url'=>'doctors.create',
+                    'route'=>'doctors.create',
                     'icon' => 'fas fa-fw fa-plus-circle',
                 ],
                 [
@@ -206,12 +210,12 @@ return [/*
 
                 [
                     'text' => 'create',
-                    'url'=>'#',
+                    'route'=>'nurses.create',
                     'icon' => 'fas fa-fw fa-plus-circle',
                 ],
                 [
                     'text' => 'all',
-                    'url'=>'#',
+                    'route'=>'nurses.index',
                     'icon' => 'fas fa-fw fa-layer-group',
                 ],
             ],
@@ -232,6 +236,25 @@ return [/*
                 [
                     'text' => 'all',
                     'route'=>'hospitals.index',
+                    'icon' => 'fas fa-fw fa-layer-group',
+                ],
+            ],
+        ],
+
+
+        [
+            'text' => 'Specialties',
+            'icon' => 'fas fa-grip-vertical',
+            'submenu' => [
+
+                [
+                    'text' => 'create',
+                    'route'=>'specializations.create',
+                    'icon' => 'fas fa-fw fa-plus-circle',
+                ],
+                [
+                    'text' => 'all',
+                    'route'=>'specializations.index',
                     'icon' => 'fas fa-fw fa-layer-group',
                 ],
             ],
@@ -258,7 +281,7 @@ return [/*
         [
             'text' => 'EmergencyCodes',
             'icon' => 'fas fa-fw fa-exclamation-triangle',
-            'route' =>'codes',
+            'route' =>'emergencycodes.index',
             'icon_color' => 'danger',
 
         ],
@@ -363,12 +386,12 @@ return [/*
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css',
                 ],
             ],

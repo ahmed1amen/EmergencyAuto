@@ -31,11 +31,10 @@ return [
     'Hospitals' => 'المستشفيات',
     'Departments' =>'الأقسام',
     'EmergencyCodes' =>'اكواد الطوارئ',
-    'Store' => 'المخازن',
+    'Specialties' => 'التخصصات',
     'Products' => 'المنتجات',
     'Categories' => 'إدارة الأصناف',
-    'MainCategories' => 'الأصناف الرئيسة',
-    'SubCategories' => 'الأصناف الفرعية',
+
 
 
 

@@ -2,7 +2,7 @@
 @section('title', 'Employees')
 
 @section('content_header')
-    <h1>Employees</h1>
+    <h1>Employee</h1>
 @stop
 
 
@@ -17,7 +17,7 @@
 
      <div class="card card-primary col-12">
             <div class="card-header">
-                <h3 class="card-title">Employees</h3>
+                <h3 class="card-title">Employee</h3>
             </div>
 
 

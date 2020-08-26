@@ -8,6 +8,8 @@ use Twilio\Rest\Client;
 
 class VoiceController extends Controller
 {
+    public $account_sid;
+    public $auth_token;
     public function __construct() {
         // Twilio credentials
         $this->account_sid = env('ACCOUNT_SID');
@@ -16,7 +18,7 @@ class VoiceController extends Controller
         $this->from = env('TWILIO_PHONE_NUMBER');
 
         // Initialize the Programmable Voice API
-        $this->client = new Client($this->account_sid, $this->auth_token);
+    //    $this->client = new Client($this->account_sid, $this->auth_token);
     }
 
     /**

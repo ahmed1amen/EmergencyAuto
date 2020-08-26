@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use Illuminate\Container\Container as Application;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 
 abstract class BaseRepository
@@ -190,4 +191,28 @@ abstract class BaseRepository
 
         return $model->delete();
     }
+
+
+
+
+
+    /**
+     * Get query source of dataTable.
+     *
+     * @param  string; $model
+     * @param  string; $Where_Column
+     * @return array
+     */
+
+    public function GetDataForSelect($table, $Where_Column = null)
+    {
+        return
+            DB::table($table)->select(['id', 'Name'])
+            //    ->where($Where_Column, ($Where_Column == null) ? null : $this->GetMyOwner())
+                ->get()->pluck('Name', 'id')->toArray();
+
+    }
+
+
+
 }

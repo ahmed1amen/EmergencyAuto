@@ -13,16 +13,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::view('/', 'home');
+
+
 Route::view('/call', 'call')->name('emergencycall');
 Route::post('/call', 'VoiceController@initiateCall')->name('initiate_call');
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-Route::get('/codes' ,'EmergencyCodeController@index')->name('codes');
 
 Auth::routes();
 
@@ -32,24 +28,18 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
-Route::resource('users', 'usersController');
-
-Route::resource('doctors', 'DoctorController');
-
-Auth::routes(['verify' => true]);
-
-Route::get('/home', 'HomeController@index')->middleware('verified');
+Route::resource('specializations', 'SpecializationController');
 
 Route::resource('hospitals', 'HospitalController');
 
 Route::resource('departments', 'DepartmentController');
 
-Route::resource('specialties', 'specialtiesController');
+Route::resource('emergencycodes', 'EmergencycodeController');
 
-Route::resource('emergencyCodes', 'emergency_codesController');
+Route::resource('doctors', 'DoctorController');
 
-Route::resource('nurses', 'nursesController');
+Route::resource('nurses', 'NurseController');
 
-Route::resource('managers', 'managersController');
+Route::resource('managers', 'ManagerController');
 
-Route::resource('employees', 'employeesController');
+Route::resource('employees', 'EmployeeController');

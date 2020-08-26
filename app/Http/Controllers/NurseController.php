@@ -2,84 +2,150 @@
 
 namespace App\Http\Controllers;
 
-use App\Nurse;
-use Illuminate\Http\Request;
+use App\DataTables\NurseDataTable;
+use App\Http\Requests;
+use App\Http\Requests\CreateNurseRequest;
+use App\Http\Requests\UpdateNurseRequest;
+use App\Repositories\NurseRepository;
+use Flash;
+use App\Http\Controllers\AppBaseController;
+use Response;
 
-class NurseController extends Controller
+class NurseController extends AppBaseController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    /** @var  NurseRepository */
+    private $nurseRepository;
+
+    public function __construct(NurseRepository $nurseRepo)
     {
-        //
+        $this->nurseRepository = $nurseRepo;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the Nurse.
      *
-     * @return \Illuminate\Http\Response
+     * @param NurseDataTable $nurseDataTable
+     * @return Response
+     */
+    public function index(NurseDataTable $nurseDataTable)
+    {
+        return $nurseDataTable->render('nurses.index');
+    }
+
+    /**
+     * Show the form for creating a new Nurse.
+     *
+     * @return Response
      */
     public function create()
     {
-        //
+        return view('nurses.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Nurse in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param CreateNurseRequest $request
+     *
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateNurseRequest $request)
     {
-        //
+        $input = $request->all();
+
+        $nurse = $this->nurseRepository->create($input);
+
+        Flash::success('Nurse saved successfully.');
+
+        return redirect(route('nurses.index'));
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified Nurse.
      *
-     * @param  \App\Nurse  $nurse
-     * @return \Illuminate\Http\Response
+     * @param  int $id
+     *
+     * @return Response
      */
-    public function show(Nurse $nurse)
+    public function show($id)
     {
-        //
+        $nurse = $this->nurseRepository->find($id);
+
+        if (empty($nurse)) {
+            Flash::error('Nurse not found');
+
+            return redirect(route('nurses.index'));
+        }
+
+        return view('nurses.show')->with('nurse', $nurse);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified Nurse.
      *
-     * @param  \App\Nurse  $nurse
-     * @return \Illuminate\Http\Response
+     * @param  int $id
+     *
+     * @return Response
      */
-    public function edit(Nurse $nurse)
+    public function edit($id)
     {
-        //
+        $nurse = $this->nurseRepository->find($id);
+
+        if (empty($nurse)) {
+            Flash::error('Nurse not found');
+
+            return redirect(route('nurses.index'));
+        }
+
+        return view('nurses.edit')->with('nurse', $nurse);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified Nurse in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Nurse  $nurse
-     * @return \Illuminate\Http\Response
+     * @param  int              $id
+     * @param UpdateNurseRequest $request
+     *
+     * @return Response
      */
-    public function update(Request $request, Nurse $nurse)
+    public function update($id, UpdateNurseRequest $request)
     {
-        //
+        $nurse = $this->nurseRepository->find($id);
+
+        if (empty($nurse)) {
+            Flash::error('Nurse not found');
+
+            return redirect(route('nurses.index'));
+        }
+
+        $nurse = $this->nurseRepository->update($request->all(), $id);
+
+        Flash::success('Nurse updated successfully.');
+
+        return redirect(route('nurses.index'));
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified Nurse from storage.
      *
-     * @param  \App\Nurse  $nurse
-     * @return \Illuminate\Http\Response
+     * @param  int $id
+     *
+     * @return Response
      */
-    public function destroy(Nurse $nurse)
+    public function destroy($id)
     {
-        //
+        $nurse = $this->nurseRepository->find($id);
+
+        if (empty($nurse)) {
+            Flash::error('Nurse not found');
+
+            return redirect(route('nurses.index'));
+        }
+
+        $this->nurseRepository->delete($id);
+
+        Flash::success('Nurse deleted successfully.');
+
+        return redirect(route('nurses.index'));
     }
 }

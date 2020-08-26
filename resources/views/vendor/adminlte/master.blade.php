@@ -21,10 +21,10 @@
 
     {{-- Custom stylesheets (pre AdminLTE) --}}
     @yield('adminlte_css_pre')
-
+    <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
     {{-- Base Stylesheets --}}
     @if(!config('adminlte.enabled_laravel_mix'))
-        <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
+
         <link rel="stylesheet" href="{{ asset('vendor/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 
         {{-- Configured Stylesheets --}}
@@ -33,13 +33,13 @@
         <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/adminlte.min.css') }}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     @else
-        <link rel="stylesheet" href="{{ mix(config('adminlte.laravel_mix_css_path', 'css/app.css')) }}">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         @include('adminlte::plugins', ['type' => 'css'])
 
     @endif
-
     @if(app()->getLocale() == "ar")
         <link rel="stylesheet" href="{{ asset('css/ar.css') }}">
+
     @endif
 
     {{-- Custom Stylesheets (post AdminLTE) --}}
@@ -68,7 +68,9 @@
         <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
     @endif
 
+    @yield('customecss')
 
+    <link rel="stylesheet" href="{{ asset('css/skins/skin-midnight.css') }}">
 </head>
 
 <body class="@yield('classes_body') {{ (app()->getLocale() == "ar") ? 'text-right' :""}} " @yield('body_data')  >
@@ -89,7 +91,8 @@
     {{-- Configured Scripts --}}
     @include('vendor.adminlte.plugins', ['type' => 'js'])
 @else
-    <script src="{{ mix(config('adminlte.laravel_mix_js_path', 'js/app.js')) }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+
     @include('vendor.adminlte.plugins', ['type' => 'js'])
 
 @endif
@@ -101,7 +104,6 @@
 
 @yield('customejs')
 @stack('scripts')
-
 </body>
 
 </html>

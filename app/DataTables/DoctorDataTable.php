@@ -66,7 +66,7 @@ class DoctorDataTable extends DataTable
     {
         return [
             'department_id',
-            'specification'
+            'special_id'
         ];
     }
 

@@ -2,84 +2,150 @@
 
 namespace App\Http\Controllers;
 
-use App\Manager;
-use Illuminate\Http\Request;
+use App\DataTables\ManagerDataTable;
+use App\Http\Requests;
+use App\Http\Requests\CreateManagerRequest;
+use App\Http\Requests\UpdateManagerRequest;
+use App\Repositories\ManagerRepository;
+use Flash;
+use App\Http\Controllers\AppBaseController;
+use Response;
 
-class ManagerController extends Controller
+class ManagerController extends AppBaseController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    /** @var  ManagerRepository */
+    private $managerRepository;
+
+    public function __construct(ManagerRepository $managerRepo)
     {
-        //
+        $this->managerRepository = $managerRepo;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the Manager.
      *
-     * @return \Illuminate\Http\Response
+     * @param ManagerDataTable $managerDataTable
+     * @return Response
+     */
+    public function index(ManagerDataTable $managerDataTable)
+    {
+        return $managerDataTable->render('managers.index');
+    }
+
+    /**
+     * Show the form for creating a new Manager.
+     *
+     * @return Response
      */
     public function create()
     {
-        //
+        return view('managers.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Manager in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param CreateManagerRequest $request
+     *
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateManagerRequest $request)
     {
-        //
+        $input = $request->all();
+
+        $manager = $this->managerRepository->create($input);
+
+        Flash::success('Manager saved successfully.');
+
+        return redirect(route('managers.index'));
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified Manager.
      *
-     * @param  \App\Manager  $manager
-     * @return \Illuminate\Http\Response
+     * @param  int $id
+     *
+     * @return Response
      */
-    public function show(Manager $manager)
+    public function show($id)
     {
-        //
+        $manager = $this->managerRepository->find($id);
+
+        if (empty($manager)) {
+            Flash::error('Manager not found');
+
+            return redirect(route('managers.index'));
+        }
+
+        return view('managers.show')->with('manager', $manager);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified Manager.
      *
-     * @param  \App\Manager  $manager
-     * @return \Illuminate\Http\Response
+     * @param  int $id
+     *
+     * @return Response
      */
-    public function edit(Manager $manager)
+    public function edit($id)
     {
-        //
+        $manager = $this->managerRepository->find($id);
+
+        if (empty($manager)) {
+            Flash::error('Manager not found');
+
+            return redirect(route('managers.index'));
+        }
+
+        return view('managers.edit')->with('manager', $manager);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified Manager in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Manager  $manager
-     * @return \Illuminate\Http\Response
+     * @param  int              $id
+     * @param UpdateManagerRequest $request
+     *
+     * @return Response
      */
-    public function update(Request $request, Manager $manager)
+    public function update($id, UpdateManagerRequest $request)
     {
-        //
+        $manager = $this->managerRepository->find($id);
+
+        if (empty($manager)) {
+            Flash::error('Manager not found');
+
+            return redirect(route('managers.index'));
+        }
+
+        $manager = $this->managerRepository->update($request->all(), $id);
+
+        Flash::success('Manager updated successfully.');
+
+        return redirect(route('managers.index'));
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified Manager from storage.
      *
-     * @param  \App\Manager  $manager
-     * @return \Illuminate\Http\Response
+     * @param  int $id
+     *
+     * @return Response
      */
-    public function destroy(Manager $manager)
+    public function destroy($id)
     {
-        //
+        $manager = $this->managerRepository->find($id);
+
+        if (empty($manager)) {
+            Flash::error('Manager not found');
+
+            return redirect(route('managers.index'));
+        }
+
+        $this->managerRepository->delete($id);
+
+        Flash::success('Manager deleted successfully.');
+
+        return redirect(route('managers.index'));
     }
 }

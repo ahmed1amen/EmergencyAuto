@@ -73,7 +73,7 @@ class DatabaseSeeder extends Seeder
             //...
         ];
 
-        EmergencyCode::insert($data); // Eloquent approach
+        \App\Models\Emergencycode::insert($data); // Eloquent approach
 
 
     }

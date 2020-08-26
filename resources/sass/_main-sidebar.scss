@@ -965,8 +965,8 @@
 
 .nav-sidebar {
     .nav-header {
-        border-bottom: 1px solid #d4d4d4;
-        padding-top: 11px !important;
+       // border-bottom: 1px solid #d4d4d4;
+        //padding-top: 11px !important;
         padding-right: 8px !important;
         overflow: hidden;
         text-overflow: clip;
@@ -984,9 +984,8 @@
 
     img {
         .brand-image {
-            @media (max-width: 575.98px) { 
+            @media (max-width: 575.98px) {
                  width: 80% !important;
             }
         }
     }
- 
