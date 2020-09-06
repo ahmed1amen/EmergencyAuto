@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Department
@@ -20,12 +20,12 @@ class Department extends Model
 {
 
     public $table = 'departments';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
 
-
+protected $with  = ['hospital:id,name'];
 
     public $fillable = [
         'name',
@@ -55,7 +55,7 @@ class Department extends Model
     public static $rules = [
         'name' => 'required|string|max:255',
         'numberOfBeds' => 'required|string|max:255',
-        'alarmSound' => 'required|string|max:255',
+        'alarmSound' => 'required',
         'hospital_id' => 'required',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'

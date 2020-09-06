@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::view('/', 'home');
+Route::get('/', 'DashboardController@index');
+
+
+Route::get('/alerter', 'AlerterController@index')->name('alerter.index');
 
 
 Route::view('/call', 'call')->name('emergencycall');
@@ -21,8 +24,6 @@ Route::post('/call', 'VoiceController@initiateCall')->name('initiate_call');
 
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 
 
@@ -43,3 +44,8 @@ Route::resource('nurses', 'NurseController');
 Route::resource('managers', 'ManagerController');
 
 Route::resource('employees', 'EmployeeController');
+
+
+Route::resource('users', 'UserController');
+
+Route::resource('settings', 'SettingController');

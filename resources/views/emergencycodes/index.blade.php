@@ -41,7 +41,7 @@
                             <button class="btnalert btn btn-warning m-1" audioid="{{rand(1,2)}}">
                                 <i class="fas fa-volume-up"></i>
                             </button>
-                            <a class="btn btn-secondary m-1" href="#">
+                            <a class="btn btn-secondary m-1" href="{{route('emergencycodes.edit',$code->id)}}">
                                 <i class=" fas fa-1x fa-edit"></i>
 
                             </a>

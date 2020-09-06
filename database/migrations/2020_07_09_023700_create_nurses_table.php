@@ -16,6 +16,8 @@ class CreateNursesTable extends Migration
         Schema::create('nurses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('Job');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
              $table->timestamps();
         });
     }

@@ -1,10 +1,6 @@
 @extends('adminlte::page')
 @section('title', 'Doctors')
 
-@section('content_header')
-        <h1>Doctors</h1>
-@stop
-
 @section('content')
 
         {{-- Cards --}}
@@ -17,7 +13,7 @@
                @include('doctors.table')
 
                 <div class="text-center">
-                    
+
                 </div>
             </div>
         </div>

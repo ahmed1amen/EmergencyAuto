@@ -15,10 +15,10 @@ class Nurse extends Model
 {
 
     public $table = 'nurses';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
-
+    protected $with = ['user'];
 
 
 
@@ -47,5 +47,5 @@ class Nurse extends Model
         'updated_at' => 'nullable'
     ];
 
-    
+
 }

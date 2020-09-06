@@ -1,7 +1,13 @@
 <?php
 
 use App\EmergencyCode;
+use App\Models\Department;
+use App\Models\Hospital;
+use App\Models\Setting;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use App\Models\Doctor;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -73,7 +79,120 @@ class DatabaseSeeder extends Seeder
             //...
         ];
 
-        \App\Models\Emergencycode::insert($data); // Eloquent approach
+        \App\Models\Emergencycode::insert($data);
+        Setting::create([
+            'sms_username' => '0532709980',
+            'sms_password' => 'Fdert01395',
+            'sms_template' => 'برجاء التوجه الي المستشفي لوجود حالة طارئة',
+            'twilio_account_sid' => 'AC32a62df7008e7b6469a2cbe2620e2fc1',
+            'twilio_auth_token' => '1fe33dfc8404a4ff1c5ff6dbb09cf7b9',
+            'twilio_twilio_phone_number' => '+12029339658',
+
+
+        ]);
+
+
+        $hospital = Hospital::create([
+            'name' => 'Saudi German Hospital',
+            'clinicalCapacity' => 8000,
+        ]);
+
+        $hospital2 = Hospital::create([
+            'name' => 'King Khaled Eye Specialist Hospital',
+            'clinicalCapacity' => 4806,
+        ]);
+
+
+        $data = [
+
+            [
+                'name' => 'Gynaecology', 'hospital_id' => $hospital->id, 'numberOfBeds' => rand(41, 456),
+                'alarmSound' => '',
+            ],
+
+            [
+                'name' => 'Haematology', 'hospital_id' => $hospital->id, 'numberOfBeds' => rand(41, 456),
+                'alarmSound' => '',
+            ],
+
+
+            [
+                'name' => 'Microbiology', 'hospital_id' => $hospital->id, 'numberOfBeds' => rand(41, 456),
+                'alarmSound' => '',
+            ],
+
+
+            [
+                'name' => 'Critical Care', 'hospital_id' => $hospital2->id, 'numberOfBeds' => rand(41, 456),
+                'alarmSound' => '',
+            ],
+
+
+            [
+                'name' => 'General surgery', 'hospital_id' => $hospital2->id, 'numberOfBeds' => rand(41, 456),
+                'alarmSound' => '',
+            ],
+
+
+        ];
+
+        Department::insert($data);
+
+
+        $data = [
+
+            [
+                'name' => 'Scans for A&E', 'hospital_id' => $hospital->id,
+            ],
+
+            [
+                'name' => 'Mammography', 'hospital_id' => $hospital->id,
+            ],
+
+
+            [
+                'name' => 'Gastroenterology', 'hospital_id' => $hospital->id,
+            ],
+
+
+            [
+                'name' => 'Bone disease', 'hospital_id' => $hospital2->id,
+            ],
+
+
+            [
+                'name' => 'Colon surgery', 'hospital_id' => $hospital2->id,
+            ],
+
+
+        ];
+
+        \App\Models\Specialization::insert($data);
+
+                   $ff = Faker\Factory::create();
+        for ($i = 0; $i < 10; $i++) {
+
+
+
+            $user = User::create([
+                'name' => $ff->name,
+                'email' => $ff->email,
+                'password' => bcrypt('123456789'),
+                'phoneNumber' => $ff->phoneNumber,
+                'address' => $ff->address,
+                'photo' => $ff->imageUrl(),
+                'sex' => $ff->randomElement(['male', 'female']),
+            ]);
+            $user->save();
+
+
+            \App\Models\doctor::create([
+                'department_id' => rand(1, 5),
+                'special_id' => rand(1, 5),
+                'user_id' => $user->id,
+            ]);
+
+        }
 
 
     }

@@ -2,9 +2,11 @@
 
 namespace App\Repositories;
 
+use App\Models\Doctor;
 use Illuminate\Container\Container as Application;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 
 abstract class BaseRepository
@@ -213,6 +215,31 @@ abstract class BaseRepository
 
     }
 
+    public function StoreFile($file, $default = '')
+    {
+        if ($file != null) {
+            $img = Storage::disk('public')->put('files', $file);
+            return $img;
+        } else {
+            return $default;
+        }
+    }
+
+
+
+    /**
+     * Get query source of dataTable.
+     *
+     * @param  string; $model
+     * @param  string; $Where_Column
+     * @return array
+     */
+
+    public function GetDoctors()
+    {
+
+        return Doctor::query()->select(['id','user_id'])->with('user:id,name')->get();
+    }
 
 
 }

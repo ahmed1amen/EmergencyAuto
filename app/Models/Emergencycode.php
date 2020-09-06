@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Emergencycode
@@ -20,12 +20,12 @@ class Emergencycode extends Model
 {
 
     public $table = 'emergency_codes';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
 
-
+protected $with =['doctors:doctor_id'];
 
     public $fillable = [
         'name',
@@ -62,10 +62,13 @@ class Emergencycode extends Model
         'title' => 'required|string|max:255',
         'description' => 'required|string|max:255',
         'color' => 'required|string|max:255',
-        'alarm' => 'nullable|string|max:255',
+        'alarm' => 'required',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];
 
-    
+    public function doctors()
+    {
+        return $this->belongsToMany(Doctor::class);
+    }
 }

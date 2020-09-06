@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Department;
+use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
@@ -18,7 +19,9 @@ class DepartmentDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'departments.datatables_actions');
+        return $dataTable->addColumn('alarmSound', function($data) {
+            return '<audio controls class="m-0 p-0 w-60" style="height: 30px"><source src="horse.mp3" type="audio/mpeg"></audio>';
+        })->addColumn('action', 'departments.datatables_actions') ->rawColumns(['alarmSound','action']);
     }
 
     /**
@@ -29,7 +32,8 @@ class DepartmentDataTable extends DataTable
      */
     public function query(Department $model)
     {
-        return $model->newQuery();
+
+        return $model->newQuery()->with( ['hospital:id,name']);
     }
 
     /**
@@ -55,6 +59,7 @@ class DepartmentDataTable extends DataTable
                     ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
                 ],
             ]);
+
     }
 
     /**
@@ -64,11 +69,13 @@ class DepartmentDataTable extends DataTable
      */
     protected function getColumns()
     {
+
         return [
-            'name',
-            'numberOfBeds',
-            'alarmSound',
-            'hospital_id'
+            new Column([ 'data' => 'name', 'name' => 'name', 'title' => 'name' ]),
+            new Column([ 'data' => 'numberOfBeds', 'name' => 'numberOfBeds', 'title' => 'numberOfBeds' ]),
+            new Column([ 'data' => 'alarmSound', 'name' => 'alarmSound', 'title' => 'alarmSound' ]),
+            new Column(['data'=>'hospital.name', 'name'=>'hospital.name','title'=>'Hospital Name']),
+
         ];
     }
 

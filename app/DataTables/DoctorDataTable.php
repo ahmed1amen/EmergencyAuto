@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Doctor;
+use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
@@ -18,7 +19,9 @@ class DoctorDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'doctors.datatables_actions');
+        return $dataTable->addColumn('user.photo', function($data) {
+            return '<img  class="img-fluid w-50"  src="'. $data->user->photo.  '"> </img>';
+        })->addColumn('action', 'doctors.datatables_actions') ->rawColumns(['user.photo','action']);
     }
 
     /**
@@ -65,8 +68,13 @@ class DoctorDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'department_id',
-            'special_id'
+            new Column(['data'=>'user.photo', 'name'=>'user.photo','title'=>'Photo']),
+            new Column(['data'=>'user.name', 'name'=>'user.name','title'=>'Name']),
+            new Column(['data'=>'user.phoneNumber', 'name'=>'user.phoneNumber','title'=>'Phone']),
+            new Column(['data'=>'user.name', 'name'=>'user.name','title'=>'Name']),
+            new Column(['data'=>'user.sex', 'name'=>'user.sex','title'=>'Gender']),
+            new Column(['data'=>'department.name', 'name'=>'department.name','title'=>'Department']),
+            new Column(['data'=>'special.name', 'name'=>'special.name','title'=>'Specialization']),
         ];
     }
 

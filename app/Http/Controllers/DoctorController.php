@@ -35,11 +35,15 @@ class DoctorController extends AppBaseController
     /**
      * Show the form for creating a new Doctor.
      *
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        return view('doctors.create');
+
+       $departments=  $this->doctorRepository->GetDataForSelect('departments');
+        $specialties = $this->doctorRepository->GetDataForSelect('specialties');
+        $codes = $this->doctorRepository->GetDataForSelect('emergency_codes');
+        return view('doctors.create')->with(['specialties'=>$specialties,'departments'=>$departments , 'codes' => $codes]);
     }
 
     /**
@@ -91,13 +95,20 @@ class DoctorController extends AppBaseController
     {
         $doctor = $this->doctorRepository->find($id);
 
+
+        $departments=  $this->doctorRepository->GetDataForSelect('departments');
+        $specialties = $this->doctorRepository->GetDataForSelect('specialties');
+        $codes = $this->doctorRepository->GetDataForSelect('emergency_codes');
+
+
+
         if (empty($doctor)) {
             Flash::error('Doctor not found');
 
             return redirect(route('doctors.index'));
         }
 
-        return view('doctors.edit')->with('doctor', $doctor);
+        return view('doctors.edit')->with(['doctor'=>$doctor,'specialties'=>$specialties,'departments'=>$departments , 'codes' => $codes]);
     }
 
     /**
@@ -118,7 +129,7 @@ class DoctorController extends AppBaseController
             return redirect(route('doctors.index'));
         }
 
-        $doctor = $this->doctorRepository->update($request->all(), $id);
+            $doctor = $this->doctorRepository->update($request->password == "" ? $request->except(['user.password']) : request()->all(), $id);
 
         Flash::success('Doctor updated successfully.');
 

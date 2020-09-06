@@ -14,6 +14,8 @@ return [
     //sidebar tans
     'DashboardHeader' => 'التحكم الرئيسي',
     'Main' => 'الرئيسية',
+    'LunchAlert' => 'ارسال تنبية عام',
+    'LunchCall' => 'اختبار الاتصال',
     'Notifications' => 'الاشعارات',
 
 

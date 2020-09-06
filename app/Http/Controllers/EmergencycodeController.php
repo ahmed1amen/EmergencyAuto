@@ -38,11 +38,14 @@ class EmergencycodeController extends AppBaseController
     /**
      * Show the form for creating a new Emergencycode.
      *
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        return view('emergencycodes.create');
+
+        $Doctors = $this->emergencycodeRepository->GetDoctors();
+
+        return view('emergencycodes.create')->with(['doctors'=>$Doctors]);
     }
 
     /**
@@ -88,11 +91,13 @@ class EmergencycodeController extends AppBaseController
      *
      * @param int $id
      *
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
+
         $emergencycode = $this->emergencycodeRepository->find($id);
+        $Doctors = $this->emergencycodeRepository->GetDoctors();
 
         if (empty($emergencycode)) {
             Flash::error('Emergencycode not found');
@@ -100,7 +105,7 @@ class EmergencycodeController extends AppBaseController
             return redirect(route('emergencycodes.index'));
         }
 
-        return view('emergencycodes.edit')->with('emergencycode', $emergencycode);
+        return view('emergencycodes.edit')->with(['emergencycode'=>$emergencycode , 'doctors'=>$Doctors]);
     }
 
     /**

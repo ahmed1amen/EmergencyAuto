@@ -15,6 +15,7 @@ class CreateSpecialtiesTable extends Migration
     {
         Schema::create('specialties', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('hospital_id');
             $table->string('name');
             $table->timestamps();
         });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Twilio\Exceptions\RestException;
 use Twilio\Rest\Client;
@@ -11,14 +12,16 @@ class VoiceController extends Controller
     public $account_sid;
     public $auth_token;
     public function __construct() {
+        $setting = Setting::query()->first();
         // Twilio credentials
-        $this->account_sid = env('ACCOUNT_SID');
-        $this->auth_token = env('AUTH_TOKEN');
+        $this->account_sid =   $setting->twilio_account_sid;
+        $this->auth_token =   $setting->twilio_auth_token;
+
         //the twilio number you purchased
-        $this->from = env('TWILIO_PHONE_NUMBER');
+        $this->from =    $setting->twilio_twilio_phone_number;
 
         // Initialize the Programmable Voice API
-    //    $this->client = new Client($this->account_sid, $this->auth_token);
+       $this->client = new Client($this->account_sid, $this->auth_token);
     }
 
     /**
@@ -42,7 +45,7 @@ class VoiceController extends Controller
                     $this->from, // Valid Twilio phone number
                     array(
                         "record" => True,
-                        "url" => "http://demo.twilio.com/docs/voice.xml")
+                        "url" => "http://emergencyauto.ahmedamen.com/voice.xml")
                 );
 
                 if($call) {

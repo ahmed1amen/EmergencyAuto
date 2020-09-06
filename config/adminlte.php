@@ -184,42 +184,21 @@ return [/*
             'url'=>'/',
         ],
 
-        ['header' => 'HumanResources'],
 
         [
-            'text' => 'Doctors',
-            'icon' => 'fas fa fa-users',
-            'submenu' => [
-                [
-                    'text' => 'create',
-                    'route'=>'doctors.create',
-                    'icon' => 'fas fa-fw fa-plus-circle',
-                ],
-                [
-                    'text' => 'all',
-                    'route'=>'doctors.index',
-                    'icon' => 'fas fa-fw fa-layer-group',
-                ],
-            ],
+            'text' => 'LunchAlert',
+            'icon' => 'fas fa-running',
+            'route'=>'alerter.index',
+            'icon_color' => 'warning',
+        ],
+   [
+            'text' => 'LunchCall',
+            'icon' => 'fas fa-phone-volume',
+            'route'=>'emergencycall',
+            'icon_color' => 'warning',
         ],
 
-        [
-            'text' => 'Nurses',
-            'icon' => 'fas fa fa-people-carry',
-            'submenu' => [
 
-                [
-                    'text' => 'create',
-                    'route'=>'nurses.create',
-                    'icon' => 'fas fa-fw fa-plus-circle',
-                ],
-                [
-                    'text' => 'all',
-                    'route'=>'nurses.index',
-                    'icon' => 'fas fa-fw fa-layer-group',
-                ],
-            ],
-        ],
 
         ['header' => 'PublicAdministration'],
 
@@ -278,6 +257,45 @@ return [/*
         ],
 
 
+
+        ['header' => 'HumanResources'],
+
+        [
+            'text' => 'Doctors',
+            'icon' => 'fas fa fa-users',
+            'submenu' => [
+                [
+                    'text' => 'create',
+                    'route'=>'doctors.create',
+                    'icon' => 'fas fa-fw fa-plus-circle',
+                ],
+                [
+                    'text' => 'all',
+                    'route'=>'doctors.index',
+                    'icon' => 'fas fa-fw fa-layer-group',
+                ],
+            ],
+        ],
+
+        [
+            'text' => 'Nurses',
+            'icon' => 'fas fa fa-people-carry',
+            'submenu' => [
+
+                [
+                    'text' => 'create',
+                    'route'=>'nurses.create',
+                    'icon' => 'fas fa-fw fa-plus-circle',
+                ],
+                [
+                    'text' => 'all',
+                    'route'=>'nurses.index',
+                    'icon' => 'fas fa-fw fa-layer-group',
+                ],
+            ],
+        ],
+
+
         [
             'text' => 'EmergencyCodes',
             'icon' => 'fas fa-fw fa-exclamation-triangle',
@@ -311,7 +329,7 @@ return [/*
             'submenu' => [
                 [
                     'text' => 'GeneralSettings',
-                    'url'=>'#',
+                    'route'=>'settings.index',
                     'icon' => 'fas fa-fw fa-cog',
                 ],
             ],

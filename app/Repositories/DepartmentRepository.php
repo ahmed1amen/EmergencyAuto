@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Department;
 use App\Repositories\BaseRepository;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class DepartmentRepository
@@ -31,6 +32,26 @@ class DepartmentRepository extends BaseRepository
     public function getFieldsSearchable()
     {
         return $this->fieldSearchable;
+    }
+//
+
+
+    /**
+     * Create model record
+     *
+     * @param array $input
+     *
+     * @return Model
+     */
+    public function create($input)
+    {
+        $model = $this->model->newInstance($input);
+
+
+        $this->StoreFile(request()->file('alarmSound'),'');
+        $model->save();
+
+        return $model;
     }
 
     /**

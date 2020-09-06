@@ -12,14 +12,14 @@
 
 <!-- Alarmsound Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('alarmSound', 'Alarmsound:') !!}
-    {!! Form::text('alarmSound', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+    {!! Form::label('alarmSound', 'Alarm:') !!}
+    {!! Form::file('alarmSound', ['class' => 'form-control']) !!}
 </div>
-
 <!-- Hospital Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('hospital_id', 'Hospital Id:') !!}
-    {!! Form::number('hospital_id', null, ['class' => 'form-control']) !!}
+    {!! Form::select('hospital_id',$hospitals, null,['class' => 'form-control']) !!}
+
 </div>
 
 <!-- Submit Field -->

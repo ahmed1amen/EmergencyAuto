@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateDepartmentRequest;
 use App\Repositories\DepartmentRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Contracts\View\Factory;
 use Response;
 
 class DepartmentController extends AppBaseController
@@ -35,11 +36,12 @@ class DepartmentController extends AppBaseController
     /**
      * Show the form for creating a new Department.
      *
-     * @return Response
+     * @return Factory|\Illuminate\View\View
      */
     public function create()
     {
-        return view('departments.create');
+        $hospitals=  $this->departmentRepository->GetDataForSelect('hospitals');
+        return view('departments.create')->with(['hospitals'=>$hospitals]);
     }
 
     /**

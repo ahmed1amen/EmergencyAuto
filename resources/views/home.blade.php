@@ -73,7 +73,6 @@
         </div>
 
 
-
     </div>
 
 
@@ -138,5 +137,27 @@
         </div>
         <!-- ./col -->
     </div>
+
+    <div class="col-lg-6 col-6">
+        <!-- small card -->
+        <div class="small-box bg-gradient-lime">
+
+            <div class="row text-center justify-content-center ">
+                <h1><b>رسائل النظام</b></h1>
+            </div>
+
+
+            <h3 class="text-dark"> الرصيد {{$credit['GetCreditResult']['Credit']}}</h3>
+            <h3 class="text-dark">اسم المستخدم {{$setting->sms_username}}</h3>
+
+            <div class="row text-center justify-content-center ">
+                <i class="fas fa-4x fa-sms"></i>
+
+            </div>
+
+
+        </div>
+    </div>
+
 
 @stop

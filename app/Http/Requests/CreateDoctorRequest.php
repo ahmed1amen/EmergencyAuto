@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Doctor;
 
@@ -25,6 +26,8 @@ class CreateDoctorRequest extends FormRequest
      */
     public function rules()
     {
-        return Doctor::$rules;
+
+
+        return     collect(\App\Models\User::$rules)->merge(Doctor::$rules)->toArray();
     }
 }

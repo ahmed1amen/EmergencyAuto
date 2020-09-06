@@ -17,8 +17,10 @@ class CreateDoctorsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('department_id');
             $table->unsignedBigInteger('special_id');
-            $table->foreign('department_id')->references('id')->on('departments');
-            $table->foreign('special_id')->references('id')->on('specialties');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('department_id')->references('id')->on('departments')->cascadeOnDelete();
+            $table->foreign('special_id')->references('id')->on('specialties')->cascadeOnDelete();
             $table->timestamps();
         });
     }
